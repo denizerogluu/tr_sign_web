@@ -60,9 +60,9 @@ def imageInput(device, src):
                 pred.render()  # render bbox in image
                 for im in pred.ims:
                     im_base64 = Image.fromarray(im)
-                    im_base64.save(os.path.join('data/outputs', os.path.basename(image_file)))
+                    im_base64.save(os.path.join(r'C:\Users\SBK\Desktop\tr_sign_web\data\outputs', os.path.basename(image_file)))
                     # --Display predicton
-                    img_ = Image.open(os.path.join('data/outputs', os.path.basename(image_file)))
+                    img_ = Image.open(os.path.join(r'C:\Users\SBK\Desktop\tr_sign_web\data\outputs', os.path.basename(image_file)))
                     st.image(img_, caption='Model Prediction(s)')
 
 
