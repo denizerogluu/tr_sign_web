@@ -1,5 +1,6 @@
 import streamlit as st
 import torch
+import detect
 from PIL import Image
 from io import *
 import glob
@@ -27,7 +28,7 @@ def imageInput(device, src):
 
             # call Model prediction--
            
-            model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/best.pt', force_reload=True)
+            model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/last.pt', force_reload=True)
             model.cuda() if device == 'cuda' else model.cpu()
             pred = model(imgpath)
             pred.render()  # render bbox in image
@@ -46,7 +47,7 @@ def imageInput(device, src):
         test_images = os.listdir('data/images/')
         test_image = st.selectbox('Please select a test image:', test_images)
         image_file = 'data/images/' + test_image
-        submit = st.button("BAŞARILI!")
+        submit = st.button("Predict!")
         col1, col2 = st.columns(2)
         with col1:
             img = Image.open(image_file)
@@ -54,7 +55,7 @@ def imageInput(device, src):
         with col2:
             if image_file is not None and submit:
                 # call Model prediction--
-                model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/best.pt', force_reload=True)
+                model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/last.pt', force_reload=True)
                 pred = model(image_file)
                 pred.render()  # render bbox in image
                 for im in pred.ims:
@@ -70,8 +71,8 @@ def imageInput(device, src):
 
 def main():
     # -- Sidebar
-    st.sidebar.title('⚙️Seçenekler')
-    datasrc = st.sidebar.radio("Görüntü nasıl Ekleyeceksiniz ?.", ['Hazır test görüntüleri.', 'Kendiniz ekleyeceğiniz görüntü.'])
+    st.sidebar.title('⚙️Options')
+    datasrc = st.sidebar.radio("Select input source.", ['From test set.', 'Upload your own data.'])
 
     # option = st.sidebar.radio("Select input type.", ['Image', 'Video'])
     if torch.cuda.is_available():
@@ -80,8 +81,9 @@ def main():
         deviceoption = st.sidebar.radio("Select compute Device.", ['cpu', 'cuda'], index=0)
     # -- End of Sidebar
 
-    st.header('🌾Türkçe İşaret Dili Tespit Etme Projesi')
-    st.subheader('👈🏽Yandaki Seçeneklerden Birini Seçiniz')
+    st.header('🌾Wheat Head Detection Model')
+    st.subheader('👈🏽Select the options')
+    st.sidebar.markdown("https://bit.ly/3uvYQ3R")
 
     imageInput(deviceoption, datasrc)
 
