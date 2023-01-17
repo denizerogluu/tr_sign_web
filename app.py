@@ -75,10 +75,10 @@ def main():
     datasrc = st.sidebar.radio("Görüntüyü nereden seçeceğinizi giriniz.", ['Test veri kümesi', 'Kendim görüntü yükleyeceğim'])
 
     # option = st.sidebar.radio("Select input type.", ['Image', 'Video'])
-    '''if torch.cuda.is_available():
-        deviceoption = st.sidebar.radio("Select compute Device.", ['cpu', 'cuda'], index=1)
-    else:
-        deviceoption = st.sidebar.radio("Select compute Device.", ['cpu', 'cuda'], index=0)'''
+    #if torch.cuda.is_available():
+    #   deviceoption = st.sidebar.radio("Select compute Device.", ['cpu', 'cuda'], index=1)
+    #else:
+    #    deviceoption = st.sidebar.radio("Select compute Device.", ['cpu', 'cuda'], index=0)
     # -- End of Sidebar
 
     st.header('✋Nesne Tanıma Algoritması Kullanarak Türkçe İşaret Dili Tespit Etme')
