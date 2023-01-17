@@ -34,7 +34,7 @@ def imageInput(device, src):
             pred.render()  # render bbox in image
             for im in pred.ims:
                 im_base64 = Image.fromarray(im)
-                im_base64.save(outputpath)
+                im_base64.save(r'C:\Users\SBK\Desktop\tr_sign_web\data\outputs\\'+os.path.basename(image_file))
 
             # --Display predicton
 
