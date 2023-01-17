@@ -22,7 +22,7 @@ def imageInput(device, src):
                 st.image(img, caption='Yüklenen Görüntü', use_column_width='always')
             ts = datetime.timestamp(datetime.now())
             imgpath = os.path.join('data/uploads', str(ts) + image_file.name)
-            outputpath =  os.path.join('data/outputs', os.path.basename(imgpath))
+            outputpath =  os.path.join('C:/Users/SBK/Desktop/tr_sign_web/data/outputs', os.path.basename(imgpath))
             with open(imgpath, mode="wb") as f:
                 f.write(image_file.getbuffer())
 
@@ -34,7 +34,7 @@ def imageInput(device, src):
             pred.render()  # render bbox in image
             for im in pred.ims:
                 im_base64 = Image.fromarray(im)
-                im_base64.save(r'C:\Users\SBK\Desktop\tr_sign_web\data\outputs\\'+os.path.basename(image_file))
+                im_base64.save(outputpath)
 
             # --Display predicton
 
