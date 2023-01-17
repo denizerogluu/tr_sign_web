@@ -83,7 +83,7 @@ def main():
 
     st.header('✋Nesne Tanıma Algoritması Kullanarak Türkçe İşaret Dili Tespit Etme')
     st.subheader('👈🏽Seçenekleri Seçiniz')
-    st.sidebar.markdown("")
+    st.sidebar.markdown("https://github.com/denizerogluu/tr_sign_web#readme")
 
     imageInput('cuda', datasrc)
 
