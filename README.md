@@ -8,13 +8,15 @@ Ne yazık ki ülkemizde işaret dilinin ihmal edilmesi; bu konuda sözlük, dil 
 >> Proje Ekibi:
 > - Danışman: Deniz Eroğlu
 
-
->> Örnekler: 
-> İstemek 
-> ![Örnek1](aug_1_0image14.jpeg)
-> 
-
 >> Kullanılan Teknolojiler:
 > - YOLOV5 [link](https://github.com/ultralytics/yolov5)
 > - Python [link](https://github.com/ultralytics/yolov5)
 > - OpenCV [link](https://github.com/ultralytics/yolov5) 
+
+# Örnekler: 
+- İstemek :
+<img src="aug_1_0image14.jpeg" alt="drawing" width="200"/>
+
+
+
+
