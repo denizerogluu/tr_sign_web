@@ -86,7 +86,7 @@ def main():
     st.sidebar.markdown("Detaylı Bilgi:"
         "https://github.com/denizerogluu/tr_sign_web#readme")
 
-    imageInput('cuda', datasrc)
+    imageInput('cpu', datasrc)
 
 if __name__ == '__main__':
     main()
