@@ -13,16 +13,16 @@ import time
 
 
 def imageInput(device, src):
-    if src == 'Upload your own data.':
-        image_file = st.file_uploader("Upload An Image", type=['png', 'jpeg', 'jpg'])
+    if src == 'Kendim görüntü yükleyeceğim':
+        image_file = st.file_uploader("Bir görüntü yükleyiniz", type=['png', 'jpeg', 'jpg'])
         col1, col2 = st.columns(2)
         if image_file is not None:
             img = Image.open(image_file)
             with col1:
-                st.image(img, caption='Uploaded Image', use_column_width='always')
+                st.image(img, caption='Yüklenen Görüntü', use_column_width='always')
             ts = datetime.timestamp(datetime.now())
             imgpath = os.path.join('data/uploads', str(ts) + image_file.name)
-            outputpath = os.path.join('data/outputs', os.path.basename(imgpath))
+            outputpath = 'C:\Users\SBK\Desktop\tr_sign_web\data\outputs\\'+os.path.basename(image_file)
             with open(imgpath, mode="wb") as f:
                 f.write(image_file.getbuffer())
 
@@ -40,18 +40,18 @@ def imageInput(device, src):
 
             img_ = Image.open(outputpath)
             with col2:
-                st.image(img_, caption='Model Prediction(s)', use_column_width='always')
+                st.image(img_, caption='MODEL ÇIKTISI', use_column_width='always')
 
-    elif src == 'From test set.':
+    elif src == 'Test veri kümesi':
         # Image selector slider
         test_images = os.listdir('data/images/')
-        test_image = st.selectbox('Please select a test image:', test_images)
+        test_image = st.selectbox('Lütfen bir görüntü seçiniz.', test_images)
         image_file = 'data/images/' + test_image
-        submit = st.button("Predict!")
+        submit = st.button("BAŞLAT!")
         col1, col2 = st.columns(2)
         with col1:
             img = Image.open(image_file)
-            st.image(img, caption='Selected Image', use_column_width='always')
+            st.image(img, caption='Seçilen Görüntü', use_column_width='always')
         with col2:
             if image_file is not None and submit:
                 # call Model prediction--
@@ -63,7 +63,7 @@ def imageInput(device, src):
                     im_base64.save(r'C:\Users\SBK\Desktop\tr_sign_web\data\outputs\\'+os.path.basename(image_file))
                     # --Display predicton
                     img_ = Image.open(os.path.join(r'C:\Users\SBK\Desktop\tr_sign_web\data\outputs\\'+os.path.basename(image_file)))
-                    st.image(img_, caption='Model Prediction(s)')
+                    st.image(img_, caption='MODEL ÇIKTISI')
 
 
 
@@ -71,21 +71,21 @@ def imageInput(device, src):
 
 def main():
     # -- Sidebar
-    st.sidebar.title('⚙️Options')
-    datasrc = st.sidebar.radio("Select input source.", ['From test set.', 'Upload your own data.'])
+    st.sidebar.title('⚙️Seçenekler')
+    datasrc = st.sidebar.radio("Görüntüyü nereden seçeceğinizi giriniz.", ['Test veri kümesi', 'Kendim görüntü yükleyeceğim'])
 
     # option = st.sidebar.radio("Select input type.", ['Image', 'Video'])
-    if torch.cuda.is_available():
+    '''if torch.cuda.is_available():
         deviceoption = st.sidebar.radio("Select compute Device.", ['cpu', 'cuda'], index=1)
     else:
-        deviceoption = st.sidebar.radio("Select compute Device.", ['cpu', 'cuda'], index=0)
+        deviceoption = st.sidebar.radio("Select compute Device.", ['cpu', 'cuda'], index=0)'''
     # -- End of Sidebar
 
-    st.header('🌾Wheat Head Detection Model')
-    st.subheader('👈🏽Select the options')
-    st.sidebar.markdown("https://bit.ly/3uvYQ3R")
+    st.header('✋Nesne Tanıma Algoritması Kullanarak Türkçe İşaret Dili Tespit Etme')
+    st.subheader('👈🏽Seçenekleri Seçiniz')
+    st.sidebar.markdown("")
 
-    imageInput(deviceoption, datasrc)
+    imageInput('cuda', datasrc)
 
 if __name__ == '__main__':
     main()
