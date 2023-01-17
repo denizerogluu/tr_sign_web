@@ -10,7 +10,8 @@ Ne yazık ki ülkemizde işaret dilinin ihmal edilmesi; bu konuda sözlük, dil 
 
 
 >> Örnekler: 
-> İstemek ![Örnek1](aug_1_0image14.jpeg)
+> İstemek 
+> ![Örnek1](aug_1_0image14.jpeg)
 > 
 
 >> Kullanılan Teknolojiler:
